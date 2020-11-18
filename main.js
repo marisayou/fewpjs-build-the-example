@@ -9,7 +9,6 @@ modal.classList.add("hidden");
 const hearts = document.getElementsByClassName("like-glyph");
 for (const heart of hearts) {
   heart.addEventListener("click", function(e) {
-    console.log(heart.classList);
     if (heart.classList[1] === "activated-heart") {
       heart.innerText = EMPTY_HEART;
       heart.classList.remove("activated-heart");
@@ -20,9 +19,10 @@ for (const heart of hearts) {
         heart.classList.add("activated-heart");
       })
       .catch(function(error) {
+        console.log(error);
         modal.classList.remove("hidden");
         const p = document.getElementById("modal-message");
-        p.innerText = error.message;
+        p.innerText = error;
         setTimeout(function() {
           modal.classList.add("hidden");
         }, 5000);
